@@ -103,7 +103,7 @@ passport.use(jwtStrategy);
 
     > `done` is a callback function, which takes 2 parameters - `error` and `user`
     
-4. The property `sub` on the object `payload` should contain the user id. Search for the user from your database using the user id.
+4. The property `sub` on the object `payload` should contain the user id. Using your  **User** model, search for the user from your database with the user id.
     
     - If the user exists, call the `done()` function with `null` for `error` and the results of the user details for `user`
     
