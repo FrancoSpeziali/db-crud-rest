@@ -39,7 +39,6 @@ The `cookie()` method takes 3 parameters, `name`, `value` and `options`.
 ```javascript
 {
     httpOnly: true,
-    secure: false,
     sameSite: 'lax'
 }
 ```
