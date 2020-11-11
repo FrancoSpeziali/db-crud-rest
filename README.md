@@ -75,7 +75,7 @@ passport-jwt
 
 3. Inside this file, import the named import `Strategy` from `passport-jwt`
 
-4. `Strategy` is a class. Create an instance of `Strategy`.
+4. `Strategy` is a class. Create an instance of `Strategy` called `jwtStrategy`
 
 5. Export your instance
 
@@ -103,7 +103,7 @@ passport.use(jwtStrategy);
 
     > `done` is a callback function, which takes 2 parameters - `error` and `user`
     
-4. The property `sub` on the object `payload` should contain the user id. Use this to search for the user from your database.
+4. The property `sub` on the object `payload` should contain the user id. Search for the user from your database using the user id.
     
     - If the user exists, call the `done()` function with `null` for `error` and the results of the user details for `user`
     
