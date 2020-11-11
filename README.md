@@ -95,6 +95,7 @@ passport.use(jwtStrategy);
 2. For the `options`, pass in an object, with 2 keys:
     
     `jwtFromRequest: (req) => req.cookies.jwt`
+    
     `secretOrKey` - with the secret you used to sign your tokens in `jwtIssuer.js`
 
 3. For the `callback`, create a function which receives 2 arguments, `payload` and `done`
