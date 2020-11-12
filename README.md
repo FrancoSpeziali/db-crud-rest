@@ -62,7 +62,7 @@ cookie-parser
 app.use(cookieParser());
 ```
 
-2. Import and attach `passport` to your middleware in `server.js`
+3. Import and attach `passport` to your middleware in `server.js`
 
 ```javascript
 app.use(passport.initialize());
