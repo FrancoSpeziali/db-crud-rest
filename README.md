@@ -47,12 +47,19 @@ This will instruct the client (browser) to set the JWT token as a `httpOnly` coo
 
 Once the user logs in with this route, all future requests will include this `httpOnly` cookie
 
-## Assignment 2 - Setting up passport
+## Assignment 2 - Setting up our middleware (passport & cookie-parser)
 
 1. Install the dependencies:
 
 ```
 passport
+cookie-parser
+```
+
+2. Import 'cookie-parser' as `cookieParser`, and attach to your middleware in `server.js`
+
+```javascript
+app.use(cookieParser());
 ```
 
 2. Import and attach `passport` to your middleware in `server.js`
