@@ -47,7 +47,19 @@ This will instruct the client (browser) to set the JWT token as a `httpOnly` coo
 
 Once the user logs in with this route, all future requests will include this `httpOnly` cookie
 
-## Assignment 2 - Setting up our middleware (passport & cookie-parser)
+## Assignment 2a - Setting up our middleware (cors)
+
+Since we will be running our frontend on a different domain, we need to inform our `cors()` middleware to accept `credentials` from a different domain.
+
+1. In `server.js`, look for the `cors()` middleware
+
+2. Pass the following object into the `cors` function, replacing <origin> with the URL for your frontend (including port):
+
+```javascript
+{ credentials: true, origin: <origin> }
+```
+
+## Assignment 2b - Setting up our middleware (passport & cookie-parser)
 
 1. Install the dependencies:
 
@@ -184,6 +196,16 @@ Edit the route you created in `dashboard.js`
 ## Assignment 11 - Create a React frontend
 
 In this assignment you will create a React frontend which will have
+
+> Note: Your requests to the backend should include the option:
+> `credentials: "include"`
+> This will tell your browser that it should send any cookies which were saved from the server (with the JWT token) with each request.
+> For example, your fetch request might look like this:
+> ```javascript
+> fetch('http://localhost:3001', {
+>     credentials: "include"
+> })
+> ```
 
 - A register page, which allows the user to register and connects to your `/user/register` endpoint
 
