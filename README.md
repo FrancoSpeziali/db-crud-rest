@@ -2,7 +2,6 @@
 
 This assignment will give you chance to practise:
 
-- Sending a JWT token via a httpOnly cookie
 - Database
 
 ## Expectations
@@ -13,41 +12,9 @@ These assignments are a follow up to the assignment `node-jwt-issuer`
 
 Please complete `node-jwt-issuer`. You will be expected to use the code from `node-jwt-issuer` as the starter code for the following assignments.
 
-## Assignments
+## Tasks
 
-## Assignment 1 - httpOnly JWT
-
-In the last assignment, we planned to send the JWT token as part of the response, and handle it in the frontend (via localStorage).
-
-We will switch this approach to use `httpOnly` cookies
-
-In your `jwtIssuer.js` file
-
-1. Change the returned value for the key `token` from `'Bearer' + signedToken` to just `signedToken`
-
-We no longer need to send the `"Bearer"` string since we will not be manually sending the token in the request Auth header
-
-2. Modify the login route to respond with the method `response.cookie()`
-
-Research: [Express.js response.cookie() method [en]](http://expressjs.com/en/4x/api.html#res.cookie)
-
-The `cookie()` method takes 3 parameters, `name`, `value` and `options`.
-
- - For `name` use the string `jwt`
- - For `value` pass in your JWT token
- - For `options`, use the object:
-```javascript
-{
-    httpOnly: true,
-    sameSite: 'lax'
-}
-```
-
-This will instruct the client (browser) to set the JWT token as a `httpOnly` cookie
-
-Once the user logs in with this route, all future requests will include this `httpOnly` cookie
-
-## Assignment 2a - Setting up our middleware (cors)
+## Task 1a - Setting up our middleware (cors)
 
 Since we will be running our frontend on a different domain, we need to inform our `cors()` middleware to accept `credentials` from a different domain.
 
@@ -59,9 +26,9 @@ Since we will be running our frontend on a different domain, we need to inform o
 { credentials: true, origin: <origin> }
 ```
 
-## Assignment 2b - Setting up our middleware (passport & cookie-parser)
+## Task 1b - Setting up our middleware (passport & cookie-parser)
 
-1. Install the dependencies:
+1. Install the npm dependencies:
 
 ```
 passport
@@ -80,7 +47,7 @@ app.use(cookieParser());
 app.use(passport.initialize());
 ```
 
-## Assignment 3 - Reading from the cookie with passport-jwt - Part 1
+## Task 2 - Reading from the cookie with passport-jwt - Part 1
 
 We will use `passport-jwt` to read the token from the request header
 
@@ -106,7 +73,7 @@ passport-jwt
 passport.use(jwtStrategy);
 ```
 
-## Assignment 4 - Reading from the cookie with passport-jwt - Part 2
+## Task 3 - Reading from the cookie with passport-jwt - Part 2
 
 1. `Strategy` takes 2 parameters, `options` and a `callback`
 
@@ -128,7 +95,7 @@ passport.use(jwtStrategy);
     
     - if the user does not exist, call the `done()` function, with an appropriate error message for `error` and `false` for the `user`
 
-## Assignment 5 - Setup the '/dashboard' route
+## Task 4 - Setup the '/dashboard' route
 
 We will create a new route called `dashboard` and protect it from unauthorised users
 
@@ -150,13 +117,13 @@ const router = express.Router();
 
 6. Use `app.use()` to redirect all `/dashboard` routes to the `router` variable you exported from `dashboard.js`
 
-## Assignment 6 - View dashboard route (R in CRUD)
+## Task 5 - View dashboard route (R in CRUD)
 
 Edit the route you created in `dashboard.js`
 
 1. Create an endpoint called `/view`, which will return all the details of the user
 
-## Assignment 7 - Protect the route!
+## Task 6 - Protect the route!
 
 We need to authorise that the user is logged in, before returning the data
 
@@ -166,14 +133,14 @@ We need to authorise that the user is logged in, before returning the data
 passport.authenticate('jwt', { session: false });
 ```
 
-## Assignment 8 - Add more details to the User Schema
+## Task 7 - Add more details to the User Schema
 
 1. Add the following fields to your User Schema
 
 `dateOfBirth` - date
 `telephone` - string
 
-## Assignment 9 - Allow the user to edit their details (U in CRUD)
+## Task 8 - Allow the user to edit their details (U in CRUD)
 
 Edit the route you created in `dashboard.js`
 
@@ -181,9 +148,9 @@ Edit the route you created in `dashboard.js`
 
     > This route will take inputs from the user, and update the user details
 
-2. Protect the route with the `passport.authenticate()` middleware that you used in **Assignment 7**
+2. Protect the route with the `passport.authenticate()` middleware that you used in **Task 7**
 
-## Assignment 10 - Allow the user to delete their details (D in CRUD)
+## Task 9 - Allow the user to delete their details (D in CRUD)
 
 Edit the route you created in `dashboard.js`
 
@@ -191,9 +158,9 @@ Edit the route you created in `dashboard.js`
 
     > This route will delete the user from the database
 
-2. Protect the route with the `passport.authenticate()` middleware that you used in **Assignment 7**
+2. Protect the route with the `passport.authenticate()` middleware that you used in **Task 7**
 
-## Assignment 11 - Create a React frontend
+## Task 10 - Create a React frontend
 
 In this assignment you will create a React frontend which will have
 
